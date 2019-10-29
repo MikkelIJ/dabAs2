@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/mikkeljensen/Uni/DAB/Assignment2_EFcore_au529152/Assignment2_EFcore_au529152.csproj": {}
+    "/Users/mikkeljensen/Uni/DAB/git/dabAs2/Assignment2_EFcore_au529152.csproj": {}
   },
   "projects": {
-    "/Users/mikkeljensen/Uni/DAB/Assignment2_EFcore_au529152/Assignment2_EFcore_au529152.csproj": {
+    "/Users/mikkeljensen/Uni/DAB/git/dabAs2/Assignment2_EFcore_au529152.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/mikkeljensen/Uni/DAB/Assignment2_EFcore_au529152/Assignment2_EFcore_au529152.csproj",
+        "projectUniqueName": "/Users/mikkeljensen/Uni/DAB/git/dabAs2/Assignment2_EFcore_au529152.csproj",
         "projectName": "Assignment2_EFcore_au529152",
-        "projectPath": "/Users/mikkeljensen/Uni/DAB/Assignment2_EFcore_au529152/Assignment2_EFcore_au529152.csproj",
+        "projectPath": "/Users/mikkeljensen/Uni/DAB/git/dabAs2/Assignment2_EFcore_au529152.csproj",
         "packagesPath": "/Users/mikkeljensen/.nuget/packages/",
-        "outputPath": "/Users/mikkeljensen/Uni/DAB/Assignment2_EFcore_au529152/obj/",
+        "outputPath": "/Users/mikkeljensen/Uni/DAB/git/dabAs2/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

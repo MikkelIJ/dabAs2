@@ -12,7 +12,7 @@ namespace Assignment2_EFcore_au529152
         {
             Console.WriteLine("This is Assignment 2!");
 
-            using (var context = new AppDbContext)
+            //using (var context = new AppDbContext)
         }
     }
 }
