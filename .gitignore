@@ -2,3 +2,14 @@
 *.json
 
 .DS_Store
+
+*.dll
+*.csproj
+*.pdb
+*.cache
+*.props
+
+
+obj/Debug/netcoreapp2.2/Assignment2_EFcore_au529152.AssemblyInfo.cs
+
+obj/Debug/netcoreapp2.2/Assignment2_EFcore_au529152.csproj.FileListAbsolute.txt
