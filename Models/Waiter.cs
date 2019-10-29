@@ -1,4 +1,4 @@
-namespace DABAS2.models
+namespace DABAS2.Models
 {
     public class Waiter : Person
     {
