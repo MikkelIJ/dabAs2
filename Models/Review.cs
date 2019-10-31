@@ -7,7 +7,9 @@ namespace DABAS2.Models
     {
         public int stars {get;set;}
         public string text {get;set;}
+        public string resturantAddress {get;set;}
         public Resturant Resturant {get;set;}
         public List<Dish> Dish {get;set;}
+        public List<Guest> Guest {get;set;}
     }
 }
