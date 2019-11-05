@@ -6,6 +6,7 @@ namespace DABAS2.Models
     public class DishType
     {
         public string type {get;set;}
+        public int dishTypeId {get;set;}
         public int dishId {get;set;}
         public Dish Dish {get;set;}
     }

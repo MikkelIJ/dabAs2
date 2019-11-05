@@ -10,6 +10,6 @@ namespace DABAS2.Models
         public List<ResturantType> ResturantType {get;set;}
         public List<Review> Review {get;set;}
         public List<ResturantDish> ResturantDish {get;set;}
-        public List<Table> Table {get;set;}
+        public List<MyTable> myTable {get;set;}
     }
 }

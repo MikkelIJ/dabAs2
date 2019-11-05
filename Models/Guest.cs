@@ -10,7 +10,7 @@ namespace DABAS2.Models
         public Review Review {get;set;}
         public int reviewId {get;set;}
         public int tableNumber {get;set;}
-        public Table Table {get;set;}
+        public MyTable myTable {get;set;}
         public List<GuestDish> GuestDish {get;set;}
     }
 }

@@ -9,6 +9,6 @@ namespace DABAS2.Models
         public int waiterId {get;set;}
         public int tableNumber {get;set;}
         public Waiter waiter {get;set;}
-        public Table table {get;set;}
+        public MyTable myTable {get;set;}
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DABAS2.Models
 {
-    public class Table
+    public class MyTable
     {
         public int Number {get;set;}  
         public string resturantAddress {get;set;}
