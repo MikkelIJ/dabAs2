@@ -12,5 +12,6 @@ namespace DABAS2.Models
         public int tableNumber {get;set;}
         public MyTable myTable {get;set;}
         public List<GuestDish> GuestDish {get;set;}
+        public Person person {get;set;}
     }
 }

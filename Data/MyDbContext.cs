@@ -33,10 +33,11 @@ namespace DABAS2.Data
 
             //Guest
             modelBuilder.Entity<Guest>().HasKey(g => g.id);
-            modelBuilder.Entity<Waiter>()
-                .HasDiscriminator<string>("type")
-                .HasValue<Guest>("guest")
-                .HasValue<Person>("person");
+            modelBuilder.Entity<Guest>()
+                .HasOne(w => w.person)
+                .WithOne(p => p.guest)  
+                .HasForeignKey<Person>();
+            
 
             //GuestDish
             modelBuilder.Entity<GuestDish>()
@@ -51,7 +52,7 @@ namespace DABAS2.Data
                 .OnDelete(DeleteBehavior.Cascade);
 
             //Person
-            //// arv
+            modelBuilder.Entity<Person>().HasKey(p => p.id);
 
             //Resturant
             modelBuilder.Entity<Resturant>().HasKey(r => r.address); // primary key
@@ -111,9 +112,10 @@ namespace DABAS2.Data
             //Waiter
             modelBuilder.Entity<Waiter>().HasKey(w => w.id);
             modelBuilder.Entity<Waiter>()
-                .HasDiscriminator<string>("type")
-                .HasValue<Waiter>("waither")
-                .HasValue<Person>("person");
+                .HasOne(w => w.person)
+                .WithOne(p => p.waiter)  
+                .HasForeignKey<Person>();
+            
 
             //WaiterTable
             modelBuilder.Entity<WaiterTable>()
