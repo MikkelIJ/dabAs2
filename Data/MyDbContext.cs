@@ -33,6 +33,10 @@ namespace DABAS2.Data
 
             //Guest
             modelBuilder.Entity<Guest>().HasKey(g => g.id);
+            modelBuilder.Entity<Waiter>()
+                .HasDiscriminator<string>("type")
+                .HasValue<Guest>("guest")
+                .HasValue<Person>("person");
 
             //GuestDish
             modelBuilder.Entity<GuestDish>()
@@ -106,6 +110,10 @@ namespace DABAS2.Data
             
             //Waiter
             modelBuilder.Entity<Waiter>().HasKey(w => w.id);
+            modelBuilder.Entity<Waiter>()
+                .HasDiscriminator<string>("type")
+                .HasValue<Waiter>("waither")
+                .HasValue<Person>("person");
 
             //WaiterTable
             modelBuilder.Entity<WaiterTable>()
