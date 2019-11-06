@@ -5,6 +5,7 @@ namespace DABAS2.Models
 {
     public class Dish
     {
+        public string name {get;set;}
         public float price {get;set;}
         public int id{get;set;}
  

@@ -6,6 +6,7 @@ namespace DABAS2.Models
     public class Guest
     {
         public int id {get;set;}
+        public int personId{get;set;}
         public DateTime Time {get;set;}
         public Review Review {get;set;}
         public int reviewId {get;set;}
