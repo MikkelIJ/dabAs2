@@ -11,7 +11,7 @@ namespace DABAS2.Models
  
         public Review Review {get;set;}
         
-        public int reviewId {get;set;}
+        public int? reviewId {get;set;}
  
         public List<DishType> DishType {get;set;}
         public List<ResturantDish> ResturantDish {get;set;}
