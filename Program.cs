@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-
+using DABAS2.Data;
+using DABAS2.Models;
 
 namespace Assignment2_EFcore_au529152
 {
@@ -10,9 +11,14 @@ namespace Assignment2_EFcore_au529152
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("This is Assignment 2!");
-
+            System.Console.WriteLine("This is Assignment 2. System a");
             
+            
+            
+        
         }
+
+       
+        
     }
 }

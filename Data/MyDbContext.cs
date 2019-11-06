@@ -16,6 +16,17 @@ namespace DABAS2.Data
             
         }
 
+
+        public DbSet <Person> Persons {get;set;}
+        public DbSet <Resturant> Resturants {get;set;}
+        public DbSet <Waiter> Waiters {get;set;}
+        public DbSet <Guest> Guests {get;set;}
+        public DbSet <Review> Reviews {get;set;}
+        public DbSet <MyTable> MyTables {get;set;}
+        public DbSet <Dish> Dishes {get;set;}
+
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Dish
