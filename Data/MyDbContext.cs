@@ -11,13 +11,14 @@ namespace DABAS2.Data
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
         {
-            //optionsBuilder.UseSqlServer("Data Source=127.0.0.1,1433;Database=gr11;User ID=SA;Password=Mikkelsql88;");
-            optionsBuilder.UseSqlServer("Data Source=127.0.0.1,1433;Database=gr11;User ID=SA;Password=FroiFroi14;");
+            optionsBuilder.UseSqlServer("Data Source=127.0.0.1,1433;Database=gr11;User ID=SA;Password=Mikkelsql88;");
+            //optionsBuilder.UseSqlServer("Data Source=127.0.0.1,1433;Database=gr11;User ID=SA;Password=FroiFroi14;");
         }
 
 
         public DbSet <Person> Persons {get;set;}
         public DbSet <Resturant> Resturants {get;set;}
+        public DbSet <ResturantType> ResturantTypes {get;set;}
         public DbSet <Waiter> Waiters {get;set;}
         public DbSet <Guest> Guests {get;set;}
         public DbSet <Review> Reviews {get;set;}
@@ -32,12 +33,13 @@ namespace DABAS2.Data
             modelBuilder.Entity<Dish>().HasKey(d => d.id);
         
             //DishType
+            modelBuilder.Entity<DishType>().HasKey(d => d.dishTypeId);
             modelBuilder.Entity<DishType>()
                 .HasOne(dt => dt.Dish)
                 .WithMany(d => d.DishType)
                 .HasForeignKey(dt => dt.dishId)
                 .OnDelete(DeleteBehavior.Cascade);
-            modelBuilder.Entity<DishType>().HasKey(d => d.dishTypeId);
+            
             
 
 
@@ -90,12 +92,13 @@ namespace DABAS2.Data
                 .OnDelete(DeleteBehavior.Cascade);
 
             //ResturantType
+            modelBuilder.Entity<ResturantType>().HasKey(d => d.resturantTypeId);
             modelBuilder.Entity<ResturantType>()
                 .HasOne(rt => rt.Resturant)
                 .WithMany(r => r.ResturantType)
                 .HasForeignKey(rt => rt.resturantAdress)
                 .OnDelete(DeleteBehavior.Cascade);
-            modelBuilder.Entity<ResturantType>().HasKey(d => d.resturantTypeId);
+            
 
             //Review
             modelBuilder.Entity<Review>().HasKey(r => r.id);
