@@ -11,9 +11,8 @@ namespace DABAS2.Data
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
         {
-            //optionsBuilder.UseSqlServer("Data Source=dabas2.db");
-            optionsBuilder.UseSqlServer("Data Source=127.0.0.1,1433;Database=gr11;User ID=SA;Password=Mikkelsql88;");
-            
+            //optionsBuilder.UseSqlServer("Data Source=127.0.0.1,1433;Database=gr11;User ID=SA;Password=Mikkelsql88;");
+            optionsBuilder.UseSqlServer("Data Source=127.0.0.1,1433;Database=gr11;User ID=SA;Password=FroiFroi14;");
         }
 
 
@@ -139,7 +138,16 @@ namespace DABAS2.Data
                 .WithMany(t => t.WaiterTable)
                 .HasForeignKey(wt => wt.tableNumber)
                 .OnDelete(DeleteBehavior.Cascade);
-        
+
+
+            // fill database with sample data
+            //// Resturant
+            modelBuilder.Entity<Resturant>().HasData(new Resturant {name = "MorMor's kitchen", address = "Oldtimers road 7"});
+            modelBuilder.Entity<Resturant>().HasData(new Resturant {name = "Dare to eat it?", address = "Wierdo streed 13"});
+            modelBuilder.Entity<Resturant>().HasData(new Resturant {name = "Canibal stew", address = "Mortlilty street 5"});
+
+            //// Resturant Types
+   
         }
     }
 }

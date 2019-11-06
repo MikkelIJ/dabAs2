@@ -4,14 +4,16 @@ using DABAS2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Assignment2_EFcore_au529152.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191106094231_SampleDataTry")]
+    partial class SampleDataTry
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,7 +35,7 @@ namespace Assignment2_EFcore_au529152.Migrations
 
                     b.HasIndex("reviewId");
 
-                    b.ToTable("Dishes");
+                    b.ToTable("Dish");
                 });
 
             modelBuilder.Entity("DABAS2.Models.DishType", b =>
@@ -71,7 +73,7 @@ namespace Assignment2_EFcore_au529152.Migrations
 
                     b.HasIndex("tableNumber");
 
-                    b.ToTable("Guests");
+                    b.ToTable("Guest");
                 });
 
             modelBuilder.Entity("DABAS2.Models.GuestDish", b =>
@@ -105,7 +107,7 @@ namespace Assignment2_EFcore_au529152.Migrations
 
                     b.HasIndex("resturantAddress");
 
-                    b.ToTable("MyTables");
+                    b.ToTable("MyTable");
                 });
 
             modelBuilder.Entity("DABAS2.Models.Person", b =>
@@ -122,7 +124,7 @@ namespace Assignment2_EFcore_au529152.Migrations
                         .IsUnique()
                         .HasFilter("[waiterid] IS NOT NULL");
 
-                    b.ToTable("Persons");
+                    b.ToTable("Person");
                 });
 
             modelBuilder.Entity("DABAS2.Models.Resturant", b =>
@@ -134,24 +136,7 @@ namespace Assignment2_EFcore_au529152.Migrations
 
                     b.HasKey("address");
 
-                    b.ToTable("Resturants");
-
-                    b.HasData(
-                        new
-                        {
-                            address = "Oldtimers road 7",
-                            name = "MorMor's kitchen"
-                        },
-                        new
-                        {
-                            address = "Wierdo streed 13",
-                            name = "Dare to eat it?"
-                        },
-                        new
-                        {
-                            address = "Mortlilty street 5",
-                            name = "Canibal stew"
-                        });
+                    b.ToTable("Resturant");
                 });
 
             modelBuilder.Entity("DABAS2.Models.ResturantDish", b =>
@@ -206,7 +191,7 @@ namespace Assignment2_EFcore_au529152.Migrations
 
                     b.HasIndex("resturantAddress");
 
-                    b.ToTable("Reviews");
+                    b.ToTable("Review");
                 });
 
             modelBuilder.Entity("DABAS2.Models.Waiter", b =>
@@ -219,7 +204,7 @@ namespace Assignment2_EFcore_au529152.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Waiters");
+                    b.ToTable("Waiter");
                 });
 
             modelBuilder.Entity("DABAS2.Models.WaiterTable", b =>
