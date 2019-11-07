@@ -13,7 +13,7 @@ namespace DABAS2.Models
         public override string ToString()
         {
             
-            return type;
+            return string.Format("\nType: {0}",type);
 
         }
     }

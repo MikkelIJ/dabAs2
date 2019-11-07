@@ -19,6 +19,7 @@ namespace DABAS2.Data
         public DbSet <Person> Persons {get;set;}
         public DbSet <Resturant> Resturants {get;set;}
         public DbSet <ResturantType> ResturantType {get;set;}
+        public DbSet <ResturantDish> ResturantDish {get;set;}
         public DbSet <Waiter> Waiters {get;set;}
         public DbSet <Guest> Guests {get;set;}
         public DbSet <Review> Reviews {get;set;}

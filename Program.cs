@@ -53,6 +53,9 @@ namespace Assignment2_EFcore_au529152
                         case "x":
                             Environment.Exit(0);
                             break;
+                        default:
+                            System.Console.WriteLine("Unknown command");
+                            break;
                     
                     }
                 }
@@ -128,7 +131,37 @@ namespace Assignment2_EFcore_au529152
 
         private static void ListResturantAddr(MyDbContext context)
         {
-            
+            System.Console.WriteLine("\nThe resturants are:\n");
+            List<Resturant> list = context.Resturants.ToList();
+            foreach (var resturant in list)
+                {
+                    System.Console.WriteLine(resturant);
+                }
+
+            System.Console.WriteLine("\nFor more information about a resturant, please write its address:\n");
+            string input = Console.ReadLine();
+            System.Console.WriteLine("\nChosen resturant is:\n");
+            List<Resturant> chosen = context.Resturants.Where(r => r.address.Equals(input)).ToList();
+            foreach (var resturant in chosen)
+                {
+                    System.Console.WriteLine(resturant);
+                }
+            System.Console.WriteLine("Choose: m(menu), g(Guest review on dishes)");
+            string choise = System.Console.ReadLine();
+
+            switch(choise)
+            {
+                case "m":
+                    List<Dish> dish =context.Dishes
+                    .Include(rd => rd.ResturantDish)
+                    .ThenInclude(r => r.Resturant)
+                    .ToList();
+                    System.Console.WriteLine(string.Join(",", dish));
+                    
+                    break;
+                case "g":
+                    break;
+            }
         }
 
         private static void createResturant(MyDbContext context)

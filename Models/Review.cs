@@ -15,7 +15,7 @@ namespace DABAS2.Models
 
          public override string ToString()
         {
-            return string.Format("Review: {0} \nStars: {1}\n",text,stars);
+            return string.Format("\nReview: {0} \nStars: {1}\n",text,stars);
         }
     }
 }

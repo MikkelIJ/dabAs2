@@ -26,8 +26,9 @@ namespace DABAS2.Models
                 review = string.Join("",Review);
             }
             
-            return string.Format("\nResturant: {0} \nAdress: {1} \nType: {2} \n{3}\n",name,address,resturantType,review);
+            return string.Format("Resturant: {0} \nAdress: {1} {2} {3}\n",name,address,resturantType,review);
 
         }
+
     }
 }
