@@ -18,15 +18,15 @@ namespace DABAS2.Models
             var resturantType = "";
             if (ResturantType != null)
             {
-                resturantType = string.Join(";",ResturantType);
+                resturantType = string.Join(", ",ResturantType);
             }
-            var review = "N/A";
+            var review = "";
             if (Review != null)
             {
-                review = string.Join(";",Review);
+                review = string.Join("",Review);
             }
             
-            return string.Format("\nResturant: {0} \nAdress: {1} \nType: {2}\n \n",name,address,resturantType);
+            return string.Format("\nResturant: {0} \nAdress: {1} \nType: {2} \n{3}\n",name,address,resturantType,review);
 
         }
     }

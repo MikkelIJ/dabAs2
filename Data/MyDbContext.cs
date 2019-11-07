@@ -149,7 +149,7 @@ namespace DABAS2.Data
             modelBuilder.Entity<Resturant>().HasData(new Resturant {name = "Canibal stew", address = "Mortility street 5"});
 
             //// Resturant Types
-            modelBuilder.Entity<ResturantType>().HasData(new ResturantType {resturantTypeId = 1, type = "Brekfast", resturantAdress = "Oldtimers road 7"});
+            modelBuilder.Entity<ResturantType>().HasData(new ResturantType {resturantTypeId = 1, type = "Breakfast", resturantAdress = "Oldtimers road 7"});
             modelBuilder.Entity<ResturantType>().HasData(new ResturantType {resturantTypeId = 2, type = "Diner", resturantAdress = "Oldtimers road 7"});
             modelBuilder.Entity<ResturantType>().HasData(new ResturantType {resturantTypeId = 3 ,type = "Buffet", resturantAdress = "Wierdo street 13"});
             modelBuilder.Entity<ResturantType>().HasData(new ResturantType {resturantTypeId = 4 ,type = "A la Carte", resturantAdress = "Mortility street 5"});

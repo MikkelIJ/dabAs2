@@ -12,5 +12,10 @@ namespace DABAS2.Models
         public Resturant Resturant {get;set;}
         public List<Dish> Dish {get;set;}
         public List<Guest> Guest {get;set;}
+
+         public override string ToString()
+        {
+            return string.Format("Review: {0} \nStars: {1}\n",text,stars);
+        }
     }
 }

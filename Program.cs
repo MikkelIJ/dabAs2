@@ -63,28 +63,64 @@ namespace Assignment2_EFcore_au529152
 
         private static void ListResturantType(MyDbContext context)
         {
-            System.Console.WriteLine("Choose Resturant type to list:");
+            System.Console.WriteLine("\nChoose Resturant type to list:");
             System.Console.WriteLine("b(Breakfast), d(Diner), bu(Buffet), a(A la Carte):");
             string line = Console.ReadLine();
 
             switch(line)
             {
                 case "b":
-                    List<Resturant> list = context.Resturants
-                    .Include(rt => rt.ResturantType)
+                    List<Resturant> breakfast =(from r in context.Resturants
+                    join rt in context.ResturantType on r.address equals rt.resturantAdress
+                    where rt.type == "Breakfast"
+                    select r)
+                    .Include(r => r.ResturantType)
+                    .Include(rv => rv.Review)
                     .ToList();
-                    foreach (var resturant in list)
+                    foreach (var resType in breakfast)
                     {
-
-
-                        System.Console.WriteLine(resturant);
+                        System.Console.WriteLine(resType);
                     }
                     break;
                 case "d":
+                    List<Resturant> diner =(from r in context.Resturants
+                    join rt in context.ResturantType on r.address equals rt.resturantAdress
+                    where rt.type == "Diner"
+                    select r)
+                    .Include(r => r.ResturantType)
+                    .Include(rv => rv.Review)
+                    .ToList();
+                    foreach (var resType in diner)
+                    {
+                        System.Console.WriteLine(resType);
+                    }
                     break;
                 case "bu":
+                    List<Resturant> buffet =(from r in context.Resturants
+                    join rt in context.ResturantType on r.address equals rt.resturantAdress
+                    where rt.type == "Buffet"
+                    select r)
+                    .Include(r => r.ResturantType)
+                    .Include(rv => rv.Review)
+                    .ToList();
+                    foreach (var resType in buffet)
+                    {
+                        System.Console.WriteLine(resType);
+                    }
+
                     break;
                 case "a":
+                    List<Resturant> carte =(from r in context.Resturants
+                    join rt in context.ResturantType on r.address equals rt.resturantAdress
+                    where rt.type == "A la Carte"
+                    select r)
+                    .Include(r => r.ResturantType)
+                    .Include(rv => rv.Review)
+                    .ToList();
+                    foreach (var resType in carte)
+                    {
+                        System.Console.WriteLine(resType);
+                    }
                     break;
             }
         
