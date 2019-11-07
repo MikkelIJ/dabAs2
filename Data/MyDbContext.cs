@@ -18,7 +18,7 @@ namespace DABAS2.Data
 
         public DbSet <Person> Persons {get;set;}
         public DbSet <Resturant> Resturants {get;set;}
-        public DbSet <ResturantType> ResturantTypes {get;set;}
+        public DbSet <ResturantType> ResturantType {get;set;}
         public DbSet <Waiter> Waiters {get;set;}
         public DbSet <Guest> Guests {get;set;}
         public DbSet <Review> Reviews {get;set;}
@@ -81,6 +81,11 @@ namespace DABAS2.Data
                 .WithOne(t => t.Resturant)
                 .HasForeignKey(t => t.resturantAddress)
                 .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Resturant>()
+                .HasMany<ResturantType>(rt => rt.ResturantType)
+                .WithOne(r => r.Resturant)
+                .HasForeignKey(rt => rt.resturantAdress)
+                .OnDelete(DeleteBehavior.Cascade);
             
             //ResturantDish
             modelBuilder.Entity<ResturantDish>()
@@ -96,11 +101,6 @@ namespace DABAS2.Data
 
             //ResturantType
             modelBuilder.Entity<ResturantType>().HasKey(d => d.resturantTypeId);
-            modelBuilder.Entity<ResturantType>()
-                .HasOne(rt => rt.Resturant)
-                .WithMany(r => r.ResturantType)
-                .HasForeignKey(rt => rt.resturantAdress)
-                .OnDelete(DeleteBehavior.Cascade);
             
 
             //Review

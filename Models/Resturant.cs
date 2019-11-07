@@ -15,7 +15,7 @@ namespace DABAS2.Models
         
         public override string ToString()
         {
-            var resturantType = "N/A";
+            var resturantType = "";
             if (ResturantType != null)
             {
                 resturantType = string.Join(";",ResturantType);
@@ -26,7 +26,7 @@ namespace DABAS2.Models
                 review = string.Join(";",Review);
             }
             
-            return string.Format("\nResturant: {0} \nAdress: {1} \nType: {2}\n\n",name,address,resturantType);
+            return string.Format("\nResturant: {0} \nAdress: {1} \nType: {2}\n \n",name,address,resturantType);
 
         }
     }

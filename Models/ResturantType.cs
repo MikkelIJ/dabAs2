@@ -9,5 +9,12 @@ namespace DABAS2.Models
         public int resturantTypeId {get;set;}
         public string resturantAdress {get;set;}
         public Resturant Resturant {get;set;}
+
+        public override string ToString()
+        {
+            
+            return type;
+
+        }
     }
 }
