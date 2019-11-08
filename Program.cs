@@ -43,7 +43,9 @@ namespace Assignment2_EFcore_au529152
 
                             break;
                         case "w":
-                            createWaiter(context);
+                            Waiter waiter = createWaiter(context);
+                            context.Waiters.Add(waiter);
+                            context.SaveChanges();
                             break;
                         case "t":
                             MyTable myTable = createTable(context);
@@ -56,7 +58,9 @@ namespace Assignment2_EFcore_au529152
                             context.SaveChanges();
                             break;
                         case "g":
-                            createGuest(context);
+                            Guest guest = createGuest(context);
+                            context.Guests.Add(guest);
+                            context.SaveChanges();
                             break;
                         case "rw":
                             Review review = createReview(context);
@@ -208,6 +212,26 @@ namespace Assignment2_EFcore_au529152
             return context.Dishes.Where(d => d.name == dish).Single();
         }
 
+        private static MyTable findTable(MyDbContext context)
+        {
+            Console.Write("Table number: ");
+            int tableNum = int.Parse(Console.ReadLine());
+
+            return context.MyTables.Where(t => t.Number == tableNum).Single();
+        }
+
+        private static Person newPerson(MyDbContext context)
+        {
+            Console.Write("Enter persons name: ");
+            string persName = Console.ReadLine();
+
+            Person person = new Person()
+            {
+                name = persName,
+            };
+            return person;
+        }
+
         private static Resturant createResturant(MyDbContext context)
         {
             Console.Write("Name: ");
@@ -261,22 +285,38 @@ namespace Assignment2_EFcore_au529152
 
 
 
-        private static void createWaiter(MyDbContext context)
+        private static Waiter createWaiter(MyDbContext context)
         {
-            Console.Write("Name: ");
-            string newName = Console.ReadLine();
+            Person person = newPerson(context);
+            context.Persons.Add(person);
+            context.SaveChanges();
 
-            Console.Write("Address: ");
-            string newAddress = Console.ReadLine();
+            Console.Write("Assing waiter to resturant by the resturant table number: ");
+            MyTable table = findTable(context);
 
-            /*
+            Console.Write("Waiters salaty: ");
+            float waiterSalaty = float.Parse(Console.ReadLine());
+
             Waiter waiter = new Waiter()
             {
-                name = newNa
-                address = newAddress,
+                personId = person.id,
+                salary = waiterSalaty,
             };
-            return resturant;
-            */
+
+            if (table != null)
+            {
+                table.WaiterTable = new List<WaiterTable>() 
+                {
+                    new WaiterTable()
+                    {
+                        myTable = table,
+                        Waiter = waiter
+                    }
+                };
+            }
+            
+
+            return waiter;
         }
 
         private static MyTable createTable(MyDbContext context)
@@ -323,9 +363,39 @@ namespace Assignment2_EFcore_au529152
             return dish;
         }
 
-        private static void createGuest(MyDbContext context)
+        private static Guest createGuest(MyDbContext context)
         {
+            Person person = newPerson(context);
+            context.Persons.Add(person);
+            context.SaveChanges();
+
+            Console.Write("Assing Guest to resturant by the resturant table number ");
+            MyTable table = findTable(context);
+
+            Console.Write("Which dish is the new guest ordering? ");
+            Dish orderDish = findDish(context);
+
+
+            Guest guest = new Guest()
+            {
+                personId = person.id,
+                tableNumber = table.Number,
+                Time = DateTime.Now
+            };
+
+            if (orderDish != null)
+            {
+                orderDish.GuestDish = new List<GuestDish>() 
+                {
+                    new GuestDish()
+                    {
+                        Guest = guest,
+                        Dish = orderDish
+                    }
+                };
+            }
             
+            return guest;
         }
 
         private static Review createReview(MyDbContext context)

@@ -9,7 +9,7 @@ namespace DABAS2.Models
         public int personId{get;set;}
         public DateTime Time {get;set;}
         public Review Review {get;set;}
-        public int reviewId {get;set;}
+        public int? reviewId {get;set;}
         public int tableNumber {get;set;}
         public MyTable myTable {get;set;}
         public List<GuestDish> GuestDish {get;set;}

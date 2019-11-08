@@ -21,6 +21,7 @@ namespace DABAS2.Data
         public DbSet <ResturantType> ResturantType {get;set;}
         public DbSet <ResturantDish> ResturantDish {get;set;}
         public DbSet <Waiter> Waiters {get;set;}
+        public DbSet <WaiterTable> WaiterTables {get;set;}
         public DbSet <Guest> Guests {get;set;}
         public DbSet <Review> Reviews {get;set;}
         public DbSet <MyTable> MyTables {get;set;}
@@ -64,11 +65,13 @@ namespace DABAS2.Data
             modelBuilder.Entity<Person>()
                 .HasOne(g => g.guest)
                 .WithOne(p => p.person)
-                .HasForeignKey<Guest>(g => g.personId);
+                .HasForeignKey<Guest>(g => g.personId)
+                .OnDelete(DeleteBehavior.Restrict);
             modelBuilder.Entity<Person>()
                 .HasOne(w => w.waiter)
                 .WithOne(p => p.person)
-                .HasForeignKey<Waiter>(w => w.personId);
+                .HasForeignKey<Waiter>(w => w.personId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             //Resturant
             modelBuilder.Entity<Resturant>().HasKey(r => r.address); // primary key
@@ -132,7 +135,7 @@ namespace DABAS2.Data
             //WaiterTable
             modelBuilder.Entity<WaiterTable>().HasKey(wt => wt.waiterTableId);
             modelBuilder.Entity<WaiterTable>()
-                .HasOne(wt => wt.waiter)
+                .HasOne(wt => wt.Waiter)
                 .WithMany(w => w.WaiterTable)
                 .HasForeignKey(wt => wt.waiterId)
                 .OnDelete(DeleteBehavior.Cascade);

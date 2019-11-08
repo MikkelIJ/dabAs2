@@ -8,7 +8,7 @@ namespace DABAS2.Models
         public int waiterTableId {get;set;}
         public int waiterId {get;set;}
         public int tableNumber {get;set;}
-        public Waiter waiter {get;set;}
+        public Waiter Waiter {get;set;}
         public MyTable myTable {get;set;}
     }
 }
