@@ -186,6 +186,14 @@ namespace Assignment2_EFcore_au529152
             }
         }
 
+        private static Resturant findResturant(MyDbContext context)
+        {
+            Console.Write("Resturant address: ");
+            string addr = Console.ReadLine();
+
+            return context.Resturants.Where(r => r.address == addr).Single();
+        }
+
         private static Resturant createResturant(MyDbContext context)
         {
             Console.Write("Name: ");
