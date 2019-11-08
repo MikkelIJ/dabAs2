@@ -79,6 +79,7 @@ namespace Assignment2_EFcore_au529152
                     select r)
                     .Include(r => r.ResturantType)
                     .Include(rv => rv.Review)
+                    .Take(5)
                     .ToList();
                     foreach (var resType in breakfast)
                     {
@@ -92,6 +93,7 @@ namespace Assignment2_EFcore_au529152
                     select r)
                     .Include(r => r.ResturantType)
                     .Include(rv => rv.Review)
+                    .Take(5)
                     .ToList();
                     foreach (var resType in diner)
                     {
@@ -105,6 +107,7 @@ namespace Assignment2_EFcore_au529152
                     select r)
                     .Include(r => r.ResturantType)
                     .Include(rv => rv.Review)
+                    .Take(5)
                     .ToList();
                     foreach (var resType in buffet)
                     {
@@ -119,6 +122,7 @@ namespace Assignment2_EFcore_au529152
                     select r)
                     .Include(r => r.ResturantType)
                     .Include(rv => rv.Review)
+                    .Take(5)
                     .ToList();
                     foreach (var resType in carte)
                     {
@@ -152,14 +156,27 @@ namespace Assignment2_EFcore_au529152
             switch(choise)
             {
                 case "m":
-                    List<Dish> dish =context.Dishes
+                    List<Resturant> dishList =context.Resturants
+                    .Where(r => r.address.Equals(input))
                     .Include(rd => rd.ResturantDish)
-                    .ThenInclude(r => r.Resturant)
+                    .ThenInclude(d => d.Dish)
+                    .ThenInclude(d => d.DishType)
                     .ToList();
-                    System.Console.WriteLine(string.Join(",", dish));
+
+                    System.Console.WriteLine(string.Join("", dishList));
                     
                     break;
                 case "g":
+                    List<Review> guestList =context.Reviews
+                    .Where(r => r.resturantAddress.Equals(input))
+                    .Include(r => r.Guest)
+                    .ThenInclude(g => g.myTable)
+                    .Include(r => r.Guest)
+                    .ThenInclude(g => g.person)
+                    .Include(r => r.Dish)
+                    .ToList();
+
+                    System.Console.WriteLine(string.Join("", guestList));
                     break;
             }
         }

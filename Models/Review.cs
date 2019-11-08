@@ -15,7 +15,18 @@ namespace DABAS2.Models
 
          public override string ToString()
         {
-            return string.Format("\nReview: {0} \nStars: {1}\n",text,stars);
+            var guest = "";
+            if (Guest != null)
+            {
+                guest = string.Join(", ",Guest);
+            }
+            var dish = "";
+            if (Dish != null)
+            {
+                dish = string.Join(", ",Dish);
+            }
+
+            return string.Format("{0} {1}\nReview: {2} \nStars: {3}\n",guest,dish,text,stars);
         }
     }
 }

@@ -11,16 +11,11 @@ namespace DABAS2.Models
         public int id {get;set;}
         public Waiter waiter {get;set;}
         public Guest guest {get;set;}
-/*
+
         public override string ToString()
         {
-            var waiter = "";
-            if (Waiter != null)
-            {
-                waiter = string.Join(";", Waiter);
-            }
-            return string.Format("Waiter({0}");
-        }*/
+            return string.Format("{0}", name);
+        }
     }
     
 }

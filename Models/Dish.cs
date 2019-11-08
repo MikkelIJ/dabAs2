@@ -20,14 +20,13 @@ namespace DABAS2.Models
 
         public override string ToString()
         {
-            var resturantDish = new StringBuilder();
-            foreach (var rd in ResturantDish)
+            var dishType = "";
+            if (DishType != null)
             {
-                resturantDish.Append(rd.Resturant).Append(",");
+                dishType = string.Join(", ",DishType);
             }
 
-
-            return string.Format("\n{0}, Price: {1}DKK,", name, price);
+            return string.Format("\nDish: {0}, Price: {1}DKK, {2}", name, price, dishType);
         }
         
     }

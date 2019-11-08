@@ -14,5 +14,11 @@ namespace DABAS2.Models
         public MyTable myTable {get;set;}
         public List<GuestDish> GuestDish {get;set;}
         public Person person {get;set;}
+
+        public override string ToString()
+        {
+            return string.Format("\n{0} sitting at table {1} eating", person, tableNumber);
+        }
+
     }
 }

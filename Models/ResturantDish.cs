@@ -10,5 +10,16 @@ namespace DABAS2.Models
         public string ResturantAddress {get;set;}  
         public Resturant Resturant {get;set;}
         public Dish Dish {get;set;}
+
+        public override string ToString()
+        {
+           var dish = "";
+            if (Dish != null)
+            {
+                dish = string.Join("",Dish);
+            }
+
+            return string.Format("{0}", Dish);
+        }
     }
 }
