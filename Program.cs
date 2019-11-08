@@ -46,16 +46,22 @@ namespace Assignment2_EFcore_au529152
                             createWaiter(context);
                             break;
                         case "t":
-                            createTable(context);
+                            MyTable myTable = createTable(context);
+                            context.MyTables.Add(myTable);
+                            context.SaveChanges();
                             break;
                         case "d":
-                            createDish(context);
+                            Dish dish = createDish(context);
+                            context.Dishes.Add(dish);
+                            context.SaveChanges();
                             break;
                         case "g":
                             createGuest(context);
                             break;
                         case "rw":
-                            createReview(context);
+                            Review review = createReview(context);
+                            context.Reviews.Add(review);
+                            context.SaveChanges();
                             break;
                         case "x":
                             Environment.Exit(0);
@@ -194,6 +200,14 @@ namespace Assignment2_EFcore_au529152
             return context.Resturants.Where(r => r.address == addr).Single();
         }
 
+        private static Dish findDish(MyDbContext context)
+        {
+            Console.Write("Dish name: ");
+            string dish = Console.ReadLine();
+
+            return context.Dishes.Where(d => d.name == dish).Single();
+        }
+
         private static Resturant createResturant(MyDbContext context)
         {
             Console.Write("Name: ");
@@ -265,14 +279,48 @@ namespace Assignment2_EFcore_au529152
             */
         }
 
-        private static void createTable(MyDbContext context)
+        private static MyTable createTable(MyDbContext context)
         {
-            
+            Resturant resturant = findResturant(context);
+
+            MyTable table = new MyTable()
+            {
+                resturantAddress = resturant.address,
+            };
+
+            return table;
         }
 
-        private static void createDish(MyDbContext context)
+        private static Dish createDish(MyDbContext context)
         {
-            
+            Resturant resturant = findResturant(context);
+
+            Console.Write("Dish name: ");
+            string dishName = Console.ReadLine();
+
+            Console.Write("Dish price: ");
+            float dishPrice = float.Parse(Console.ReadLine());
+
+            Dish dish = new Dish()
+            {
+                name = dishName,
+                price = dishPrice,
+
+            };
+
+            if (resturant != null)
+            {
+                dish.ResturantDish = new List<ResturantDish>() 
+                {
+                    new ResturantDish()
+                    {
+                        Resturant = resturant,
+                        Dish = dish
+                    }
+                };
+            }
+
+            return dish;
         }
 
         private static void createGuest(MyDbContext context)
@@ -280,9 +328,23 @@ namespace Assignment2_EFcore_au529152
             
         }
 
-        private static void createReview(MyDbContext context)
+        private static Review createReview(MyDbContext context)
         {
-            
+            Resturant resturant = findResturant(context);
+
+            Console.Write("Review: ");
+            string rev = Console.ReadLine();
+
+            Console.Write("Stars: ");
+            int revStars = int.Parse(Console.ReadLine());
+
+                Review review = new Review()
+                {
+                    text = rev,
+                    stars = revStars,
+                    resturantAddress = resturant.address,
+                };
+            return review;
         }
        
         
