@@ -33,7 +33,14 @@ namespace Assignment2_EFcore_au529152
                             ListResturantAddr(context);
                             break;
                         case "r":
-                            createResturant(context);
+                            Resturant resturant = createResturant(context);
+                            context.Resturants.Add(resturant);
+
+                            ResturantType resturantType = setResturantType(context);
+                            context.ResturantType.Add(resturantType);
+                            
+                            context.SaveChanges();
+
                             break;
                         case "w":
                             createWaiter(context);
@@ -60,8 +67,6 @@ namespace Assignment2_EFcore_au529152
                     }
                 }
             }
-            
-        
         }
 
         private static void ListResturantType(MyDbContext context)
@@ -125,7 +130,7 @@ namespace Assignment2_EFcore_au529152
                     .Take(5)
                     .ToList();
                     foreach (var resType in carte)
-                    {
+                    {                        
                         System.Console.WriteLine(resType);
                     }
                     break;
@@ -181,14 +186,75 @@ namespace Assignment2_EFcore_au529152
             }
         }
 
-        private static void createResturant(MyDbContext context)
+        private static Resturant createResturant(MyDbContext context)
         {
+            Console.Write("Name: ");
+            string newName = Console.ReadLine();
 
+            Console.Write("Address: ");
+            string newAddress = Console.ReadLine();
+
+
+            Resturant resturant = new Resturant()
+            {
+                name = newName,
+                address = newAddress,
+            };
+            return resturant;
         }
+
+        private static ResturantType setResturantType(MyDbContext context)
+        {
+    
+            Console.Write("Choose type: ");
+            Console.Write("Choose type: \nb(Breakfast)\nd(Diner)\nbu(Buffet)\na(A la Carte)");
+            string newType = Console.ReadLine();
+
+            switch(newType)
+            {
+                case "b":
+                    newType = "Breakfast";
+                break;
+
+                case "d":
+                    newType = "Diner";
+                break;
+
+                case "bu":
+                    newType = "Buffet";
+                break;
+
+                case "a":
+                    newType = "A la Carte";
+                break;
+            }
+            ResturantType resturantType = new ResturantType()
+            {
+                type = newType,
+                
+            };
+
+            return resturantType;
+        }
+
+
 
         private static void createWaiter(MyDbContext context)
         {
-            
+            Console.Write("Name: ");
+            string newName = Console.ReadLine();
+
+            Console.Write("Address: ");
+            string newAddress = Console.ReadLine();
+
+            /*
+            Waiter waiter = new Waiter()
+            {
+                name = newNa
+                address = newAddress,
+            };
+            return resturant;
+            */
         }
 
         private static void createTable(MyDbContext context)
